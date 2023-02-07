@@ -9,9 +9,10 @@ steps:
     Number2: 2
     Operation: '+'
   env:
-    name: "outputVar"
+    name: "calctask"
+  
 - task: Bash@3
   inputs:
     targetType: 'inline'
     script: |
-      echo "$(outputVar)"
+      echo "$(calctask.outputVar)"
