@@ -14,4 +14,4 @@ steps:
   inputs:
     targetType: 'inline'
     script: |
-      Write-Host "$(calctask.outputVar)"
+      Write-Host "$(InstaceForamthere.outputVar)"
