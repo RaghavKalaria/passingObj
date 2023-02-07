@@ -17,22 +17,32 @@ steps:
     script: |
       Write-Host "$(calctask1.outputVar)" 
       $string = '$(calctask1.outputVar)'
-      $CharArray = $string.Split(',')
-      $resultArray = $CharArray[$CharArray.length-1]
+      $SplitArray = $string.Split(',')
+      $resultArray = $SplitArray[$CharArray.length-1] 
       $resultArray = $resultArray.split(":")
       $resultArray = $resultArray.split('}')
-      $result = $resultArray[$resultArray.length -2]
+      $result = $resultArray[1]
       Write-Host "$result"
       Write-Host "##vso[task.setvariable variable=results;isOutput=true;issecret=false;]$result"
       Write-Host hello
   name: "getResult"
-      
+# in $resultArray = $SplitArray[$CharArray.length-x] 
+#x = 1: result value 
+#x = 2: Operation value 
+#x = 3: num2 value
+#x = 4: num1 value
+#if turned into extension we can make this into user defined task.
 - task: PowerShell@2
   name: "output"
   inputs:
     targetType: 'inline'
     script: |
       Write-Host "$(getResult.results)" 
-      
+
+- task: calculatorPassObj@0
+  inputs:
+    Number1: "$(getResult.results)"
+    Number2: 2
+    Operation: '+'
 
 
