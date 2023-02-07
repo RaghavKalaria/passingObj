@@ -18,13 +18,17 @@ steps:
       $getWhat = "result"
       if($getWhat -eq "num1") {
         $x = 4
-      }else if($getWhat -eq "num2"){
+      }
+      else if($getWhat -eq "num2"){
         $x = 3
-      }else if($getWhat -eq "operation"){
+      }
+      else if($getWhat -eq "operation"){
         $x = 2
-      }else if($getWhat -eq "result"){
+      }
+      else if($getWhat -eq "result"){
         $x = 1
-      }else{
+      }
+      else{
         write-host please enter valid input for getWhat; result or num1 or num2 or operation
       }
       Write-Host "$(calctask1.outputVar)" 
