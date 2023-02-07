@@ -17,13 +17,7 @@ steps:
     targetType: 'inline'
     script: |
       Write-Host "$(calctask1.outputVar) 
-      $string = $(calctask1.outputVar)
-      $CharArray = $string.Split(',')
-      $resultArray = $CharArray[$CharArray.length-1]
-      $resultArray = $resultArray.split(":")
-      $resultArray = $resultArray.split('}')
-      $result = $resultArray[$resultArray.length -2]
-      echo "##vso[task.setvariable variable=result]$result"
+      
 - task: PowerShell@2
   name: "output"
   inputs:
