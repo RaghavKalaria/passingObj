@@ -16,7 +16,7 @@ steps:
   inputs:
     targetType: 'inline'
     script: |
-      Write-Host "$(calctask1.outputVar) 
+      Write-Host "$(calctask1.outputVar)" 
       
 - task: PowerShell@2
   name: "output"
