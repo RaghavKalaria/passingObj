@@ -15,4 +15,4 @@ steps:
   inputs:
     targetType: 'inline'
     script: |
-      echo "$(calctask.outputVar)"
+      echo "1+2"
