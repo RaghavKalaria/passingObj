@@ -25,13 +25,14 @@ steps:
       $result = $resultArray[$resultArray.length -2]
       Write-Host "$result"
       "##vso[task.setvariable variable=results]$result"
+      Write-Host "$results"
       
 - task: PowerShell@2
   name: "output"
   inputs:
     targetType: 'inline'
     script: |
-      Write-Host "$(getResult.results)" 
+      Write-Host "$getResult.results" 
       
 
 
