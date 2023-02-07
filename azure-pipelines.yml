@@ -24,15 +24,14 @@ steps:
       $resultArray = $resultArray.split('}')
       $result = $resultArray[$resultArray.length -2]
       Write-Host "$result"
-      Write-Host "##vso[task.setvariable variable=results]$result"
-      Write-Host "$results"
+      Write-Host "##vso[task.setvariable variable=result;isOutput=true;issecret=false;]$result"
       
 - task: PowerShell@2
   name: "output"
   inputs:
     targetType: 'inline'
     script: |
-      Write-Host "$getResult.results" 
+      Write-Host "$getResult.result" 
       
 
 
