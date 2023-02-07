@@ -20,7 +20,6 @@ stages:
               script: |
                 pwd
                 ls -a
-                cat buildandreleasetask/tests/_suite.js
           - task: Npm@1
             inputs:
               command: 'install'
