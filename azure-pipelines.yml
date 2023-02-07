@@ -8,7 +8,7 @@ steps:
     Number1: 1
     Number2: 2
     Operation: '+'
-  name: "calctask"
+  
   
 - task: PowerShell@2
   inputs:
