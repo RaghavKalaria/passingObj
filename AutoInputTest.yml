@@ -1,0 +1,60 @@
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+- task: calculatorPassObj@0
+  inputs:
+    Number1: 1
+    Number2: 2
+    Operation: '+'
+  name: "calctask1"
+  
+  
+- task: PowerShell@2
+  inputs:
+    targetType: 'inline'
+    script: |
+      $getWhat = "result"
+      if($getWhat -eq "num1") {
+        $x = 4
+      }else if($getWhat -eq "num2"){
+        $x = 3
+      }else if($getWhat -eq "operation"){
+        $x = 2
+      }else if($getWhat -eq "result"){
+        $x = 1
+      }else{
+        write-host please enter valid input for getWhat; result or num1 or num2 or operation
+      }
+      Write-Host "$(calctask1.outputVar)" 
+      $string = '$(calctask1.outputVar)'
+      $SplitArray = $string.Split(',')
+      $resultArray = $SplitArray[$CharArray.length-$x] 
+      $resultArray = $resultArray.split(":")
+      $resultArray = $resultArray.split('}')
+      $result = $resultArray[1]
+      Write-Host "$result"
+      Write-Host "##vso[task.setvariable variable=results;isOutput=true;issecret=false;]$result"
+      Write-Host hello
+  name: "getResult"
+# in $resultArray = $SplitArray[$CharArray.length-x] 
+#x = 1: result value 
+#x = 2: Operation value 
+#x = 3: num2 value
+#x = 4: num1 value
+#if turned into extension we can make this into user defined task.
+- task: PowerShell@2
+  name: "output"
+  inputs:
+    targetType: 'inline'
+    script: |
+      Write-Host "$(getResult.results)" 
+
+- task: calculatorPassObj@0
+  inputs:
+    Number1: "$(getResult.results)"
+    Number2: 2
+    Operation: '*'
+
+
