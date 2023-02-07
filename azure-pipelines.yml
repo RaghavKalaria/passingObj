@@ -23,7 +23,7 @@ steps:
       $resultArray = $resultArray.split(":")
       $resultArray = $resultArray.split('}')
       $result = $resultArray[$resultArray.length -2]
-      Write-Host $(result)
+      Write-Host '$(result)''
       "##vso[task.setvariable variable=results]$result"
       
 - task: PowerShell@2
