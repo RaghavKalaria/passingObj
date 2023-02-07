@@ -1,0 +1,49 @@
+{
+ "$schema": "https://raw.githubusercontent.com/Microsoft/azure-pipelines-task-lib/master/tasks.schema.json",
+ "id": "eb15dbd2-fbbf-4dc7-ab58-3482f7148830",
+ "name": "calculatorPassObj",
+ "friendlyName": "CalcPassObj",
+ "description": "Does basic 2 number calculation and outputs an object",
+ "helpMarkDown": "",
+ "category": "Utility",
+ "author": "RK@Mindstix",
+ "version": {
+     "Major": 0,
+     "Minor": 1,
+     "Patch": 0
+ },
+ "instanceNameFormat": "InstaceForamthere",
+ "inputs": [
+     {
+         "name": "Number1",
+         "type": "int",
+         "label": "Enter First Number",
+         "required": true
+         
+     },
+     {
+         "name": "Number2",
+         "type": "int",
+         "label": "Enter Second Number",
+         "required": true
+     },
+     {
+        "name": "Operation",
+        "type": "string",
+        "label": "Enter Operation to be performed",
+        "required": true
+     }
+
+ ],
+ "outputVariables": [
+    {
+        "name": "outputVar",
+        "description": "stores the output object in the form of a string."
+    }
+ ],
+ "execution": {
+     "Node": {
+         "target": "index.js"
+     }
+ }
+ }
