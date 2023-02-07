@@ -1,0 +1,63 @@
+"inputs": [
+     {
+         "name": "samplestring",
+         "type": "string",
+         "label": "Sample String",
+         "defaultValue": "",
+         "required": true,
+         "helpMarkDown": "A sample string"
+     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+     try {
+        const num1 : string| undefined = tl.getInput('Number1',true);
+        const num2 : string | undefined = tl.getInput('Number2',true);
+        const Op : string | undefined = tl.getInput('Operation', true);
+        if  (Op  == '+') {
+            console.log( Number(num1) + Number(num2) );
+            
+        } else if ( Op == "-"){
+            console.log(Number(num1) - Number(num2));
+
+        }else if ( Op == "*"){
+            console.log(Number(num1) * Number(num2));
+
+        }else if ( Op == "/"){
+            console.log(Number(num1) / Number(num2));
+
+        } else {
+            console.log("Operand was not identified, Please try + - * /")
+            tl.setResult(tl.TaskResult.Failed, 'Bad input was given');
+            console.log("Operand was not identified, Please try + - * /")
+            return;
+
+        }
+        
+    }
+    catch (e) {
+        console.error(e);
+    }
