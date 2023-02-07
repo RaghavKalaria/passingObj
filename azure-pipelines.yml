@@ -24,7 +24,7 @@ steps:
       $resultArray = $resultArray.split('}')
       $result = $resultArray[$resultArray.length -2]
       Write-Host "$result"
-      "##vso[task.setvariable variable=results]$result"
+      Write-Host "##vso[task.setvariable variable=results]$result"
       Write-Host "$results"
       
 - task: PowerShell@2
