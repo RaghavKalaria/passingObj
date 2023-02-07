@@ -17,7 +17,7 @@ steps:
     targetType: 'inline'
     script: |
       Write-Host "$(calctask1.outputVar)" 
-      $string = $(calctask1.outputVar)
+      $string = "$(calctask1.outputVar)"
       $CharArray = $string.Split(',')
       $resultArray = $CharArray[$CharArray.length-1]
       $resultArray = $resultArray.split(":")
