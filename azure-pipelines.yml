@@ -3,46 +3,19 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
-- task: calculatorPassObj@0
+- task: NodeTool@0
   inputs:
-    Number1: 1
-    Number2: 2
-    Operation: '+'
-  name: "calctask1"
-  
-  
-- task: PowerShell@2
-  inputs:
-    targetType: 'inline'
-    script: |
-      Write-Host "$(calctask1.outputVar)" 
-      $string = '$(calctask1.outputVar)'
-      $SplitArray = $string.Split(',')
-      $resultArray = $SplitArray[$CharArray.length-1] 
-      $resultArray = $resultArray.split(":")
-      $resultArray = $resultArray.split('}')
-      $result = $resultArray[1]
-      Write-Host "$result"
-      Write-Host "##vso[task.setvariable variable=results;isOutput=true;issecret=false;]$result"
-      Write-Host hello
-  name: "getResult"
-# in $resultArray = $SplitArray[$CharArray.length-x] 
-#x = 1: result value 
-#x = 2: Operation value 
-#x = 3: num2 value
-#x = 4: num1 value
-#if turned into extension we can make this into user defined task.
-- task: PowerShell@2
-  name: "output"
-  inputs:
-    targetType: 'inline'
-    script: |
-      Write-Host "$(getResult.results)" 
+    versionSpec: '10.x'
+  displayName: 'Install Node.js'
 
-- task: calculatorPassObj@0
+- script: |
+    cd buildandreleasetask
+    ls
+    npm install
+    npm run coverage
+  displayName: 'npm install and output coverage'
+
+- task: PublishCodeCoverageResults@1
   inputs:
-    Number1: "$(getResult.results)"
-    Number2: 2
-    Operation: '+'
-
-
+    codeCoverageTool: Cobertura
+    summaryFileLocation: $(System.DefaultWorkingDirectory)/coverage/cobertura-coverage.xml
