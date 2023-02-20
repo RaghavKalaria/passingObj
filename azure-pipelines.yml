@@ -10,6 +10,8 @@ steps:
   displayName: 'Install Node.js'
 
 - script: |
+    cd buildandreleasetask
+    ls
     npm install
     npm run coverage
   displayName: 'npm install and output coverage'
