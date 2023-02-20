@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "testScript": "mocha ./TestFile --reporter junit --reporter-option output=ResultsFile.xml"
+    "testScript": "mocha ./TestFile --reporter junit --reporter-option output=ResultsFile.xml",
+    "coverage": "jest --coverage --coverageReporters=cobertura"
   },
   "keywords": [],
   "author": "",
