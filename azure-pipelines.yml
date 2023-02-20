@@ -12,6 +12,7 @@ steps:
     cd buildandreleasetask
     ls
     npm install
+    npm install -g jest
     npm run coverage
   displayName: 'npm install and output coverage'
 
